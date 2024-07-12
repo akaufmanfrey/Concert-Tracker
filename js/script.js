@@ -19,25 +19,26 @@ fetch(apiUrl, {
 function displayCard(results) {
     console.log(results);
     const mainCard = $('<div>');
-    mainCard.addClass('card my-3');
+    mainCard.addClass('block max-w-sm p-6 bg-gray border border-gray-300 rounded-lg shadow-md hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 card');
+    const mainCardContent = $('<div>');
+    mainCardContent.addClass('card-content')
     const cardTitle = $('<p>');
-    cardTitle.addClass('card-header');
+    cardTitle.addClass('mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white');
     cardTitle.text(results.title)
     const cardDate = $('<div>');
-    cardDate.addClass('card-text');
+    cardDate.addClass('mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white');
     cardDate.text(results.start_local);
-    console.log(cardDate.text());
     const cardDesc = $('<p>');
-    cardDesc.addClass('card-text');
+    cardDesc.addClass('mb-2 text-lg font-normal text-gray-700 dark:text-gray-400');
     cardDesc.text(results.description);
-    console.log(cardDesc.text());
     const cardAddress = $('<p>');
-    cardAddress.addClass('card-text');
+    cardAddress.addClass('mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white');
     cardAddress.text(results.geo.address.formatted_address);
-    mainCard.append(cardTitle);
-    mainCard.append(cardDate);
-    mainCard.append(cardDesc);
-    mainCard.append(cardAddress);
+    mainCardContent.append(cardTitle);
+    mainCardContent.append(cardDate);
+    mainCardContent.append(cardDesc);
+    mainCardContent.append(cardAddress);
+    mainCard.append(mainCardContent);
     $('main').append(mainCard);
 }
 
