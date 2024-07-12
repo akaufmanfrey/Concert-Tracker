@@ -1,1 +1,81 @@
-// style.css
+/* Reset some default styles */
+body, h1, h2, p, a, nav, form, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header styles */
+header {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px 0;
+}
+
+/* Aside styles */
+aside {
+    width: 25%;
+    padding: 20px;
+    background-color: #f1f3f5;
+    border-right: 1px solid #e9ecef;
+}
+
+aside h2 {
+    margin-bottom: 10px;
+}
+
+aside form {
+    margin-bottom: 20px;
+}
+
+/* Main styles */
+main {
+    width: 75%;
+    padding: 20px;
+}
+
+footer {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
