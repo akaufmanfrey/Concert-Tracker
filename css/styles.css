@@ -23,7 +23,7 @@ header {
     padding: 10px;
     background-color: #f8f9fa;
     border-bottom: 1px solid #e9ecef;
-    font-style: bold;
+    font-style: bold, rgb(214 211 209);
 }
 
 header h1 {
@@ -38,7 +38,7 @@ nav {
 
 nav a {
     text-decoration: none;
-    color: #007bff;
+    color: rgb(214 211 209);
     font-weight: bold;
 }
 
@@ -83,6 +83,26 @@ footer {
     background-color: #f8f9fa;
     border-top: 1px solid #e9ecef;
 }
+
+
+/* Dark Mode styles */
+.dark body, .dark header, .dark aside, .dark main, .dark footer {
+    background-color: #1a202c;
+    color: #a0aec0;
+}
+
+.dark nav a {
+    color: #a0aec0;
+}
+
+.dark .bg-gray-200 {
+    background-color: #2d3748;
+}
+
+.dark .bg-gray-300 {
+    background-color: #4a5568;
+}
+
 
 .card {
     position: relative;
