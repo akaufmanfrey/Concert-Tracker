@@ -1,11 +1,8 @@
-const apiUrl = 'https://api.predicthq.com/v1/events/'
+const apiUrl = 'https://api.predicthq.com/v1/events?q=taylor+swift'
 fetch(apiUrl, {
     headers: {
-        Authorization: "Bearer vPfAQw0dUoNkuk8-WKRpeIZJgQJFk4SR5cpzxKzHLcgK3vSBJNRuQQ"
+        Authorization: "Bearer aZ6E2Dg5S1F-jxl_3A56LnvtDQEEqBw7rPP_5qgB",
     },
-    params: {
-        q: 'taylor swift'
-    }
 }).then(function(response) {
-    console.log(response);
+    console.log(response.json());
 })
