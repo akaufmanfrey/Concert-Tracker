@@ -121,27 +121,25 @@ footer {
 }
 
 /* Dark Mode styles */
-.dark body,
-.dark header,
-.dark aside,
-.dark main,
+.dark body {
+    background-color: #1a202c; /* Dark background for the entire body */
+    color: #a0aec0; /* Light text color */
+}
+
+.dark header {
+    background-color: #2d3748; /* Dark header background */
+}
+
+.dark aside {
+    background-color: #2d3748; /* Dark aside background */
+}
+
+.dark main {
+    background-color: #2d3748; /* Dark main section background */
+}
+
 .dark footer {
-    background-color: #1a202c;
-    color: #a0aec0;
-}
-
-.dark nav a {
-    color: #a0aec0;
-}
-
-.dark .bg-gray-200 {
-    background-color: #2d3748;
-}
-
-.dark .bg-gray-300 {
-    background-color: #4a5568;
-}
-
+    background-color: #2d3748; /* Dark footer background */
 .dark header h1 {
     color: white;
 }
@@ -160,16 +158,16 @@ footer {
     font-family: Arial, sans-serif;
 }
 
-.card-content {
-    position: relative;
-    z-index: 1;
-    padding: 2rem;
+.dark nav a {
+    color: #a0aec0; /* Light link color */
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    border-color: #4a5568;
+.dark .bg-gray-200 {
+    background-color: #4a5568; /* Darker gray for elements using bg-gray-200 */
+}
+
+.dark .bg-gray-300 {
+    background-color: #4a5568; /* Darker gray for elements using bg-gray-300 */
 }
 
 #concert-container {
