@@ -1,5 +1,13 @@
 /* Reset some default styles */
-body, h1, h2, p, a, nav, form, input, button {
+body,
+h1,
+h2,
+p,
+a,
+nav,
+form,
+input,
+button {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,6 +20,19 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
+/* Logo style */
+.honq-logo {
+    font-family: "Honk", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 110px;
+    font-style: normal;
+    font-variation-settings:
+        "MORF" 15,
+        "SHLN" 50;
+}
+
 .overlay {
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -31,15 +52,22 @@ header h1 {
 }
 
 nav {
-    position: fixed; /* Fix the navbar to the top */
-    top: 0; /* Position it at the top */
-    left: 0; /* Align it to the left */
-    right: 0; /* Align it to the right */
-    background-color: #1a202c; /* Semi-transparent background */
-    padding: 10px 0; /* Add some padding */
-    z-index: 1000; /* Ensure it stays above other content */
+    position: fixed;
+    /* Fix the navbar to the top */
+    top: 0;
+    /* Position it at the top */
+    left: 0;
+    /* Align it to the left */
+    right: 0;
+    /* Align it to the right */
+    background-color: #1a202c;
+    /* Semi-transparent background */
+    padding: 10px 0;
+    /* Add some padding */
+    z-index: 1000;
+    /* Ensure it stays above other content */
     width: 100%;
-    
+
 }
 
 nav a {
@@ -74,7 +102,8 @@ aside h2 {
 
 aside form {
     margin-bottom: 20px;
-    margin-top: 100px; /* Space added for the fixed navbar */
+    margin-top: 100px;
+    /* Space added for the fixed navbar */
 }
 
 /* Main styles */
@@ -91,7 +120,6 @@ footer {
     border-top: 1px solid #e9ecef;
 }
 
-/* Dark Mode styles */
 /* Dark Mode styles */
 .dark body {
     background-color: #1a202c; /* Dark background for the entire body */
@@ -112,6 +140,22 @@ footer {
 
 .dark footer {
     background-color: #2d3748; /* Dark footer background */
+.dark header h1 {
+    color: white;
+}
+
+.card {
+    position: relative;
+    background-color:  #29464a;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid #cbd5e0;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    font-family: Arial, sans-serif;
 }
 
 .dark nav a {
@@ -126,6 +170,41 @@ footer {
     background-color: #4a5568; /* Darker gray for elements using bg-gray-300 */
 }
 
-.dark header h1 {
-    color: white; /* Ensure header text is white */
+#concert-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.column {
+    width: 50%; 
+    box-sizing: border-box; 
+    padding: 10px; 
+   
+}
+
+@media (max-width: 768px) {
+    .column {
+        width: 100%; 
+    }
+}
+
+footer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+#goToTopBtn {
+    display: block;
+    margin: 0 auto;
+    text-decoration: none;
+    color: #007bff;
+    padding: 10px 20px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#goToTopBtn:hover {
+    background-color: #007bff;
+    color: white;
 }

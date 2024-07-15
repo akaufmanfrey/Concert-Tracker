@@ -2,6 +2,7 @@ const searchButton = $('button[type=submit]');
 const searchHistory = $('aside');
 const searchInput = $('#searchInput');
 const concertCards = $('#concert-container');
+const loadMoreButton = $('#load');
 
 function readArtistsFromStorage() {
   
@@ -20,6 +21,7 @@ function displaySearchHistory() {
     if (artistHistory) {
         artistHistory.forEach(generateHistoryButton);
     }
+    localStorage.setItem('loadindex', 0);
 }
 
 function generateHistoryButton(artist) {
@@ -40,9 +42,11 @@ fetch(apiUrl, {
   .then(function(response) {
         if (response.ok) {
             const artistArray = readArtistsFromStorage();
-            artistArray.push(artistSearch);
-            generateHistoryButton(artistSearch);
-            localStorage.setItem('artists', JSON.stringify(artistArray));
+            if (!(artistArray.includes(artistSearch))) {
+                artistArray.push(artistSearch);
+                generateHistoryButton(artistSearch);
+                localStorage.setItem('artists', JSON.stringify(artistArray));
+            }
             searchInput.val('');
             console.log(response);
             response.json().then(function(data) {
@@ -61,16 +65,16 @@ function displayCard(results) {
     const mainCardContent = $('<div>');
     mainCardContent.addClass('card-content')
     const cardTitle = $('<p>');
-    cardTitle.addClass('mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white');
+    cardTitle.addClass('mb-2 text-3xl font-bold tracking-tight text-white'); 
     cardTitle.text(results.title)
     const cardDate = $('<div>');
-    cardDate.addClass('mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white');
+    cardDate.addClass('mb-2 text-lg font-bold tracking-tight text-white'); 
     cardDate.text(results.start_local);
     const cardDesc = $('<p>');
     cardDesc.addClass('mb-2 text-lg font-normal text-gray-700 dark:text-gray-400');
     cardDesc.text(results.description);
     const cardAddress = $('<p>');
-    cardAddress.addClass('mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white');
+    cardAddress.addClass('mb-2 text-lg font-bold tracking-tight text-white');
     cardAddress.text(results.geo.address.formatted_address);
     mainCardContent.append(cardTitle);
     mainCardContent.append(cardDate);
@@ -79,12 +83,11 @@ function displayCard(results) {
     mainCard.append(mainCardContent);
     concertCards.append(mainCard);
 }
+
 searchButton.on('click', getConcertResults);
 $(document).ready(displaySearchHistory);
 $('aside').on('click', '.search-history', function(event) {
-    console.log(event.target);
     searchInput.val($(event.target).text());
-    // console.log(event.target.text());
     searchButton.click();
 })
 
