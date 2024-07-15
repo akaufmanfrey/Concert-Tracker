@@ -61,16 +61,16 @@ function displayCard(results) {
     const mainCardContent = $('<div>');
     mainCardContent.addClass('card-content')
     const cardTitle = $('<p>');
-    cardTitle.addClass('mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white');
+    cardTitle.addClass('mb-2 text-3xl font-bold tracking-tight text-white'); 
     cardTitle.text(results.title)
     const cardDate = $('<div>');
-    cardDate.addClass('mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white');
+    cardDate.addClass('mb-2 text-lg font-bold tracking-tight text-white'); 
     cardDate.text(results.start_local);
     const cardDesc = $('<p>');
     cardDesc.addClass('mb-2 text-lg font-normal text-gray-700 dark:text-gray-400');
     cardDesc.text(results.description);
     const cardAddress = $('<p>');
-    cardAddress.addClass('mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white');
+    cardAddress.addClass('mb-2 text-lg font-bold tracking-tight text-white');
     cardAddress.text(results.geo.address.formatted_address);
     mainCardContent.append(cardTitle);
     mainCardContent.append(cardDate);
@@ -79,6 +79,7 @@ function displayCard(results) {
     mainCard.append(mainCardContent);
     concertCards.append(mainCard);
 }
+
 searchButton.on('click', getConcertResults);
 $(document).ready(displaySearchHistory);
 $('aside').on('click', '.search-history', function(event) {
