@@ -2,6 +2,7 @@ const searchButton = $('button[type=submit]');
 const searchHistory = $('aside');
 const searchInput = $('#searchInput');
 const concertCards = $('#concert-container');
+const loadMoreButton = $('#load');
 
 function readArtistsFromStorage() {
   
@@ -20,6 +21,7 @@ function displaySearchHistory() {
     if (artistHistory) {
         artistHistory.forEach(generateHistoryButton);
     }
+    localStorage.setItem('loadindex', 0);
 }
 
 function generateHistoryButton(artist) {
@@ -40,9 +42,11 @@ fetch(apiUrl, {
   .then(function(response) {
         if (response.ok) {
             const artistArray = readArtistsFromStorage();
-            artistArray.push(artistSearch);
-            generateHistoryButton(artistSearch);
-            localStorage.setItem('artists', JSON.stringify(artistArray));
+            if (!(artistArray.includes(artistSearch))) {
+                artistArray.push(artistSearch);
+                generateHistoryButton(artistSearch);
+                localStorage.setItem('artists', JSON.stringify(artistArray));
+            }
             searchInput.val('');
             console.log(response);
             response.json().then(function(data) {
@@ -82,8 +86,6 @@ function displayCard(results) {
 searchButton.on('click', getConcertResults);
 $(document).ready(displaySearchHistory);
 $('aside').on('click', '.search-history', function(event) {
-    console.log(event.target);
     searchInput.val($(event.target).text());
-    // console.log(event.target.text());
     searchButton.click();
 })
