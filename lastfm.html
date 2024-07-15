@@ -18,10 +18,19 @@
         <h1 class="absolute inset-0 flex items-center justify-center text-3xl">Your Website Name</h1>
         <nav class="relative mt-2 z-10">
             <a href="#" class="text-stone-300 hover:text-blue-400 mx-2">Home</a>
-            <a href="#" class="text-stone-300 hover:text-blue-400 mx-2">Spotify</a>
+            <a href="#" class="text-stone-300 hover:text-blue-400 mx-2">Last.FM</a>
+            
         </nav>
         <button id="darkModeToggle" class="absolute top-2 right-2 bg-blue-500 text-white px-4 py-2">Toggle Dark
             Mode</button>
+            <div class="flex justify-center mt-4">
+                <form id="searchForm" class="flex items-center">
+                    <label for="searchInput" class="sr-only">Search:</label>
+                    <input type="text" id="searchInput" name="searchInput" class="border p-2 mr-2">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2">Submit</button>
+                </form>
+            </div>
+        
     </header>
 
     <main class="container mx-auto flex flex-col mt-4">
