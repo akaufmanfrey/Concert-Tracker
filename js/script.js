@@ -21,7 +21,6 @@ function displaySearchHistory() {
     if (artistHistory) {
         artistHistory.forEach(generateHistoryButton);
     }
-    localStorage.setItem('loadindex', 0);
 }
 
 function generateHistoryButton(artist) {
@@ -34,6 +33,7 @@ function getConcertResults(event) {
     event.preventDefault();
     const artistSearch = searchInput.val();
     const apiUrl = 'https://api.predicthq.com/v1/events?q='+ artistSearch.replace(/\s/g, "+");
+    console.log(apiUrl)
 fetch(apiUrl, {
     headers: {
         Authorization: "Bearer aZ6E2Dg5S1F-jxl_3A56LnvtDQEEqBw7rPP_5qgB",
@@ -50,7 +50,7 @@ fetch(apiUrl, {
             searchInput.val('');
             console.log(response);
             response.json().then(function(data) {
-                console.log(data.results);
+                console.log(data.next);
                 concertCards.empty();
                 data.results.forEach(displayCard);
         })
