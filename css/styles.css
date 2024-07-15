@@ -22,7 +22,7 @@ header {
     text-align: center;
     padding: 10px;
     background-color: #f8f9fa;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 30px solid #111827;
     font-style: bold, rgb(214 211 209);
 }
 
@@ -31,9 +31,15 @@ header h1 {
 }
 
 nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    position: fixed; /* Fix the navbar to the top */
+    top: 0; /* Position it at the top */
+    left: 0; /* Align it to the left */
+    right: 0; /* Align it to the right */
+    background-color: #1a202c; /* Semi-transparent background */
+    padding: 10px 0; /* Add some padding */
+    z-index: 1000; /* Ensure it stays above other content */
+    width: 100%;
+    
 }
 
 nav a {
@@ -68,6 +74,7 @@ aside h2 {
 
 aside form {
     margin-bottom: 20px;
+    margin-top: 100px; /* Space added for the fixed navbar */
 }
 
 /* Main styles */
@@ -83,7 +90,6 @@ footer {
     background-color: #f8f9fa;
     border-top: 1px solid #e9ecef;
 }
-
 
 /* Dark Mode styles */
 .dark body, .dark header, .dark aside, .dark main, .dark footer {
@@ -103,6 +109,9 @@ footer {
     background-color: #4a5568;
 }
 
+.dark header h1 {
+    color: white;
+}
 
 .card {
     position: relative;
