@@ -87,3 +87,25 @@ $('aside').on('click', '.search-history', function(event) {
     // console.log(event.target.text());
     searchButton.click();
 })
+
+//Dark Mode for index.html
+// script.js
+document.addEventListener("DOMContentLoaded", function() {
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    
+    // Check for saved user preference
+    if (localStorage.getItem("dark-mode") === "enabled") {
+        document.body.classList.add("dark");
+    }
+
+    darkModeToggle.addEventListener("click", function() {
+        document.body.classList.toggle("dark");
+        
+        // Save user preference
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("dark-mode", "enabled");
+        } else {
+            localStorage.setItem("dark-mode", "disabled");
+        }
+    });
+});
