@@ -140,6 +140,8 @@ footer {
 
 .dark footer {
     background-color: #2d3748; /* Dark footer background */
+}
+
 .dark header h1 {
     color: white;
 }
