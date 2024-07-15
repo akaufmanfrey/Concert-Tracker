@@ -1,5 +1,37 @@
-function getConcertResults(search) {
-    const apiUrl = 'https://api.predicthq.com/v1/events?q='+ search;
+const searchButton = $('button[type=submit]');
+const searchHistory = $('aside');
+const searchInput = $('#searchInput');
+const concertCards = $('#concert-container');
+
+function readArtistsFromStorage() {
+  
+    //Retrieve artists from localStorage and parse the JSON to an array. If there are no artists in localStorage, initialize an empty array and return it.
+    const storageArray = JSON.parse(localStorage.getItem("artists"));
+    if (storageArray) {
+      return storageArray
+    } else {
+      const emptyArray = [];
+      return emptyArray
+    }
+  
+}
+function displaySearchHistory() {
+    const artistHistory = readArtistsFromStorage();
+    if (artistHistory) {
+        artistHistory.forEach(generateHistoryButton);
+    }
+}
+
+function generateHistoryButton(artist) {
+    const artistButton = $('<button>');
+    artistButton.addClass('bg-gray-500 text-white px-4 py-2 search-history block my-2');
+    artistButton.text(artist);
+    searchHistory.append(artistButton);
+}
+function getConcertResults(event) {
+    event.preventDefault();
+    const artistSearch = searchInput.val();
+    const apiUrl = 'https://api.predicthq.com/v1/events?q='+ artistSearch.replace(/\s/g, "+");
 fetch(apiUrl, {
     headers: {
         Authorization: "Bearer aZ6E2Dg5S1F-jxl_3A56LnvtDQEEqBw7rPP_5qgB",
@@ -7,9 +39,15 @@ fetch(apiUrl, {
 })
   .then(function(response) {
         if (response.ok) {
+            const artistArray = readArtistsFromStorage();
+            artistArray.push(artistSearch);
+            generateHistoryButton(artistSearch);
+            localStorage.setItem('artists', JSON.stringify(artistArray));
+            searchInput.val('');
             console.log(response);
             response.json().then(function(data) {
                 console.log(data.results);
+                concertCards.empty();
                 data.results.forEach(displayCard);
         })
         }
@@ -39,7 +77,13 @@ function displayCard(results) {
     mainCardContent.append(cardDesc);
     mainCardContent.append(cardAddress);
     mainCard.append(mainCardContent);
-    $('main').append(mainCard);
+    concertCards.append(mainCard);
 }
-
-getConcertResults('taylor+swift');
+searchButton.on('click', getConcertResults);
+$(document).ready(displaySearchHistory);
+$('aside').on('click', '.search-history', function(event) {
+    console.log(event.target);
+    searchInput.val($(event.target).text());
+    // console.log(event.target.text());
+    searchButton.click();
+})
