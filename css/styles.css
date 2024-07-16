@@ -8,237 +8,212 @@ nav,
 form,
 input,
 button {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* General styles */
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh; /* Ensure the body takes full height */
+}
+
+main {
+  flex: 1; /* Ensure main content takes up available space */
 }
 
 /* Logo style */
 .honq-logo {
-    font-family: "Honk", system-ui;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-size: 110px;
-    font-style: normal;
-    font-variation-settings:
-        "MORF" 15,
-        "SHLN" 50;
+  font-family: "Honk", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 110px;
+  font-style: normal;
 }
 
 .overlay {
-    background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Header styles */
 header {
-    width: 100%;
-    text-align: center;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-bottom: 30px solid #111827;
-    font-style: bold, rgb(214 211 209);
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-bottom: 30px solid #111827;
 }
 
 header h1 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 nav {
-    position: fixed;
-    /* Fix the navbar to the top */
-    top: 0;
-    /* Position it at the top */
-    left: 0;
-    /* Align it to the left */
-    right: 0;
-    /* Align it to the right */
-    background-color: #1a202c;
-    /* Semi-transparent background */
-    padding: 10px 0;
-    margin: 
-    /* Add some padding */
-    z-index: 1000;
-    /* Ensure it stays above other content */
-    width: 100%;
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1a202c;
+  padding: 10px 0;
+  z-index: 1000;
+  width: 100%;
 }
 
 nav a {
-    text-decoration: none;
-    color: rgb(214 211 209);
-    font-weight: bold;
+  text-decoration: none;
+  color: rgb(214, 211, 209);
+  font-weight: bold;
 }
 
 nav a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Container styles */
 .container {
-    display: flex;
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px 0;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px 0;
 }
 
 /* Aside styles */
 aside {
-    width: 25%;
-    padding: 20px;
-    background-color: #f1f3f5;
-    border-right: 1px solid #e9ecef;
+  width: 25%;
+  padding: 20px;
+  background-color: #f1f3f5;
 }
 
 aside h2 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 aside form {
-    margin-bottom: 20px;
-    margin-top: 100px;
-    /* Space added for the fixed navbar */
+  margin-bottom: 20px;
+  margin-top: 100px; /* Space added for the fixed navbar */
 }
 
 /* Main styles */
 main {
-    width: 75%;
-    padding: 20px;
+  flex: 1;
+  padding: 20px;
 }
 
+/* Footer styles */
 footer {
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-    background-color: #f8f9fa;
-    border-top: 0px solid #e9ecef;
+  width: 100%;
+  background-color: #111827;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
 }
 
 /* Dark Mode styles */
-.dark body {
-    background-color: #1a202c; /* Dark background for the entire body */
-    color: #a0aec0; /* Light text color */
-}
-
 .dark header {
-    background-color: #2d3748; /* Dark header background */
+  background-color: #2d3748;
 }
 
 .dark aside {
-    background-color: #2d3748; /* Dark aside background */
+  background-color: #2d3748;
 }
 
 .dark main {
-    background-color: #2d3748; /* Dark main section background */
+  background-color: #2d3748;
 }
 
 .dark footer {
-    background-color: #2d3748; /* Dark footer background */
+  background-color: #2d3748;
 }
 
 .dark header h1 {
-    color: white;
+  color: white;
 }
 
+/* Card styles */
 .card {
-    position: relative;
-    background-image: url(../img/Card\ img.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: 2px solid #cbd5e0;
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    font-family: Arial, sans-serif;
+  position: relative;
+  background-image: url(../img/Card\ img.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #cbd5e0;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
-    transform: scale(1.02); /* Scale up slightly on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
-    border-color: #4a5568; /* Change border color on hover */
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-color: #4a5568;
 }
 
 .dark nav a {
-    color: #a0aec0; /* Light link color */
+  color: #a0aec0;
 }
 
-.dark .bg-gray-200 {
-    background-color: #4a5568; /* Darker gray for elements using bg-gray-200 */
-}
-
+.dark .bg-gray-200,
 .dark .bg-gray-300 {
-    background-color: #4a5568; /* Darker gray for elements using bg-gray-300 */
+  background-color: #4a5568;
 }
-
-
-
 
 /* Dark Mode Toggle Button Styles */
 #darkModeToggle {
-    background-color: #f3f4f6; /* Light background color */
-    color: #1f2937; /* Dark text color */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
-    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+  background-color: #f3f4f6;
+  color: #1f2937;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 #darkModeToggle:hover {
-    background-color: #e5e7eb; /* Slightly lighter background on hover */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover */
+  background-color: #e5e7eb;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Dark Mode Toggle Button Styles in Dark Mode */
 .dark #darkModeToggle {
-    background-color: #4a5568; /* Darker background color in dark mode */
-    color: #f7fafc; /* Light text color in dark mode */
+  background-color: #4a5568;
+  color: #f7fafc;
 }
 
 .dark #darkModeToggle:hover {
-    background-color: #2d3748; /* Even darker background on hover in dark mode */
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Larger shadow on hover in dark mode */
+  background-color: #2d3748;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-
+/* Concert container styles */
 #concert-container {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
+
 .column {
-    width: 50%; 
-    box-sizing: border-box; 
-    padding: 10px; 
-   
+  width: 50%;
+  box-sizing: border-box;
+  padding: 10px;
 }
-
-
 @media (max-width: 768px) {
-    .column {
-        width: 100%; 
-    }
+  .column {
+    width: 100%;
+  }
 }
 
-footer {
-    background-color: #f0f0f0;
-    padding: 0px;
-    text-align: center;
-}
-
-.honk-foot{
-    font-family: "Honk", system-ui;
-   font-size: 31px;
-    font-weight: 400;
-    font-style: normal;
-      
+.honk-foot {
+  font-family: "Honk", system-ui;
+  font-size: 31px;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #load-more-btn {
-    display: none;
+  display: none;
 }

@@ -13,49 +13,45 @@
     <link rel="stylesheet" href="./css/styles.css" />
 </head>
 
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
 
-    <header class="relative bg-gray-800 dark:bg-gray-900 text-white text-center">
-        <div class="overlay absolute inset-0 bg-black opacity-50"></div>
-        <img src="img/placeholder.jpg" alt="Concert Image" class="w-full h-64 object-cover">
-        <h1 class="absolute inset-0 flex items-center justify-center text-3xl honq-logo">Concert Tracker</h1>
-        <nav class="fixed top-0 left-0 right-0 z-10 bg-gray-800 dark:bg-gray-900 text-white flex justify-center mt-2">
-            <a href="./index.html" class="text-stone-300 hover:text-blue-400 mx-2">Home</a>
-            <a href="./lastfm.html" class="text-stone-300 hover:text-blue-400 mx-2">Last.FM</a>
-            <button id="darkModeToggle"
-                class="absolute top-1 right-2 px-4 py-2 rounded-full transition transform hover:scale-105 focus:outline-none">
-                <img src="img/dark-theme.svg" alt="Dark Mode Toggle" class="w-6 h-6">
+<header class="relative bg-gray-800 dark:bg-gray-900 text-white text-center">
+    <div class="overlay absolute inset-0 bg-black opacity-50"></div>
+    <img src="img/placeholder.jpg" alt="Concert Image" class="w-full h-64 object-cover">
+    <h1 class="absolute inset-0 flex items-center justify-center text-3xl honq-logo">Concert Tracker</h1>
+    <nav class="fixed top-0 left-0 right-0 z-10 bg-gray-800 dark:bg-gray-900 text-white flex justify-center mt-2">
+        <a href="./index.html" class="text-stone-300 hover:text-blue-400 mx-2">Home</a>
+        <a href="./lastfm.html" class="text-stone-300 hover:text-blue-400 mx-2">Last.FM</a>
+        <button id="darkModeToggle" class="absolute top-1 right-2 px-4 py-2 rounded-full transition transform hover:scale-105 focus:outline-none">
+            <img src="img/dark-theme.svg" alt="Dark Mode Toggle" class="w-6 h-6">
+        </button>
+    </nav>
+</header>
 
-        </nav>
-
-    </header>
-
-    <main class="container mx-auto flex flex-col mt-4">
-        <div class="flex justify-center my-4">
-            <form id="searchForm" class="flex items-center">
-                <label for="searchInput">Search:</label>
-                <input type="text" id="username" name="searchInput" class="border p-2 mr-2">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2">Submit</button>
-            </form>
+<main class="container mx-auto flex flex-col flex-grow mt-4">
+    <div class="flex justify-center my-4">
+        <form id="searchForm" class="flex items-center">
+            <label for="searchInput">Search:</label>
+            <input type="text" id="username" name="searchInput" class="border p-2 mr-2">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2">Submit</button>
+        </form>
+    </div>
+    <section class="flex flex-grow">
+        <div id="artist" class="w-1/2 p-4 bg-gray-200 dark:bg-gray-800 border border-gray-400 dark:border-gray-600">
+            <h1 class="text-xl mb-2 text-center">Artist</h1><br>
         </div>
-        <section class="flex">
+        <div id="genre" class="w-1/2 p-4 bg-gray-300 dark:bg-gray-700 border border-gray-400 dark:border-gray-600">
+            <h1 class="text-xl mb-2 text-center">Genre</h1><br>
+        </div>
+        <button id="load-more-btn" class="bg-blue-500 text-white px-4 py-2 mt-4">Load More</button>
+    </section>
+</main>
 
-            <div id="artist" class="w-1/2 p-4 bg-gray-200 dark:bg-gray-800 border border-gray-400 dark:border-gray-600">
-                <h1 class="text-xl mb-2 text-center">Artist</h1><br>
-            </div>
+<footer class="bg-gray-800 text-white p-4 text-center">
+    <a href="#" class="justify-center honk-foot">Go to Top</a>
+</footer>
 
-            <div id="genre" class="w-1/2 p-4 bg-gray-300 dark:bg-gray-700 border border-gray-400 dark:border-gray-600">
-                <h1 class="text-xl mb-2 text-center">Genre</h1><br>
-            </div>
-            <button id="load-more-btn" class="bg-blue-500 text-white px-4 py-2 mt-4">Load More</button>
-        </section>
-    </main>
-    <footer class="bg-gray-800 text-white p-4 text-center">
-        <a href="#" class="justify-center honk-foot">Go to Top</a>
-          
-        </footer>
-    <script src="./js/artist.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+<script src="./js/artist.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>
-
 </html>
