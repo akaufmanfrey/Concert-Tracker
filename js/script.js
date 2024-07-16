@@ -71,7 +71,7 @@ function displayCard(results) {
     cardDate.addClass('mb-2 text-lg font-bold tracking-tight text-white'); 
     cardDate.text(results.start_local);
     const cardDesc = $('<p>');
-    cardDesc.addClass('mb-2 text-lg font-normal text-gray-700 dark:text-gray-400');
+    cardDesc.addClass('mb-2 text-lg font-normal text-white dark:text-gray-400');
     cardDesc.text(results.description);
     const cardAddress = $('<p>');
     cardAddress.addClass('mb-2 text-lg font-bold tracking-tight text-white');
