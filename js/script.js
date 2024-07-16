@@ -3,6 +3,8 @@ const searchHistory = $('aside');
 const searchInput = $('#searchInput');
 const concertCards = $('#concert-container');
 const loadMoreButton = $('#load-more-btn');
+const locationInput = $('#location');
+const apiKey = 'f1d985f2f05b0ca0bb78b860038d22dc'
 
 function readArtistsFromStorage() {
 
@@ -44,8 +46,39 @@ function generateHistoryButton(artist) {
 function getConcertResults(event) {
     event.preventDefault();
     const artistSearch = searchInput.val();
-    const apiUrl = 'https://api.predicthq.com/v1/events?q=' + artistSearch.replace(/\s/g, "+");
-    console.log(apiUrl)
+    const locationSearch = locationInput.val();
+    const artistArray = readArtistsFromStorage();
+    if (!(artistArray.includes(artistSearch)) && artistSearch) {
+        artistArray.push(artistSearch);
+        generateHistoryButton(artistSearch);
+        localStorage.setItem('artists', JSON.stringify(artistArray));
+    }
+    if (artistSearch && locationSearch) {
+        const Url = `http://api.openweathermap.org/geo/1.0/direct?q=${locationSearch}&limit=1&appid=${apiKey}`
+        fetch(Url).then(function (response) {
+            if (response.ok) {
+                console.log(response);
+                response.json().then(function (data) {
+                    console.log(data);
+                    if (data.length !== 0) {
+                        const apiUrl = 'https://api.predicthq.com/v1/events?location_around.origin=' + data[0].lat + ',' + data[0].lon + '&q=' + artistSearch.replace(/\s/g, "+");
+                        console.log(apiUrl)
+                        locationInput.val('');
+                        fetchConcerts(apiUrl);
+                    } else {
+                        alert("No city with that name found");
+                    }
+                });
+            } else {
+                alert(`Error: ${response.statusText}`);
+            }
+        });
+    } else if (artistSearch) {
+        const apiUrl = 'https://api.predicthq.com/v1/events?q=' + artistSearch.replace(/\s/g, "+");
+        fetchConcerts(apiUrl);
+    }
+}
+function fetchConcerts(apiUrl) {
     fetch(apiUrl, {
         headers: {
             Authorization: "Bearer aZ6E2Dg5S1F-jxl_3A56LnvtDQEEqBw7rPP_5qgB",
@@ -53,27 +86,21 @@ function getConcertResults(event) {
     })
         .then(function (response) {
             if (response.ok) {
-                const artistArray = readArtistsFromStorage();
-                if (!(artistArray.includes(artistSearch))) {
-                    artistArray.push(artistSearch);
-                    generateHistoryButton(artistSearch);
-                    localStorage.setItem('artists', JSON.stringify(artistArray));
+            searchInput.val('');
+            console.log(response);
+            response.json().then(function(data) {
+                localStorage.setItem('next', data.next);
+                console.log(data.next);
+                concertCards.empty();
+                data.results.forEach(displayCard);      
+                if (data.next) {
+                  $('#load-more-btn').show();
+                } else {
+                  $('#load-more-btn').hide();
                 }
-                searchInput.val('');
-                console.log(response);
-                response.json().then(function (data) {
-                    localStorage.setItem('next', data.next);
-                    console.log(data.next);
-                    concertCards.empty();
-                    data.results.forEach(displayCard);
-                    if (data.next) {
-                        $('#load-more-btn').show();
-                    } else {
-                        $('#load-more-btn').hide();
-                    }
-                })
-            }
-        })
+            })
+        }
+    })
 }
 
 function loadMoreResults(event) {
@@ -135,23 +162,18 @@ $('aside').on('click', '.search-history', function (event) {
 
 
 //Dark Mode for index.html
-document.addEventListener("DOMContentLoaded", function () {
-    const darkModeToggle = document.getElementById("darkModeToggle");
 
-    // Check for saved user preference
-    if (localStorage.getItem("dark-mode") === "enabled") {
-        document.body.classList.add("dark");
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeToggle = document.querySelector('#darkModeToggle');
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+    if (isDarkMode) {
+        document.querySelector('html').classList.add('dark');
     }
 
-    darkModeToggle.addEventListener("click", function () {
-        document.body.classList.toggle("dark");
-
-        // Save user preference
-        if (document.body.classList.contains("dark")) {
-            localStorage.setItem("dark-mode", "enabled");
-        } else {
-            localStorage.setItem("dark-mode", "disabled");
-        }
+    darkModeToggle.addEventListener('click', () => {
+        document.querySelector('html').classList.toggle('dark');
+        localStorage.setItem('darkMode', document.querySelector('html').classList.contains('dark'));
     });
 });
 

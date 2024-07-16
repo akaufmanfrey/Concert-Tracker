@@ -2,6 +2,7 @@ const apiKey = '8dc00da7296801b0bf878aa91b390845';
 const userNameInput = document.querySelector('#username');
 const artistContainer = document.querySelector('#artist');
 const formSubmit = document.querySelector('#searchForm');
+const loadMoreBtn = document.querySelector('#load-more-btn');
 
 const getUserArtist = function (event) {
     event.preventDefault();
@@ -14,6 +15,7 @@ const getUserArtist = function (event) {
                 response.json().then(function (data) {
                     //console.log(data);
                     displayArtists(data);
+                    showLoadMoreButton();
                 });
             } else {
                 alert(`Error:${response.statusText}`);
@@ -44,6 +46,10 @@ const displayArtists = function (artists) {
     }
 };
 
+
+const showLoadMoreButton = function () {
+    loadMoreBtn.style.display = 'block'; 
+};
 
 formSubmit.addEventListener('submit', getUserArtist);
 

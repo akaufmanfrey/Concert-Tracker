@@ -34,19 +34,17 @@
         <div class="flex justify-center my-4">
             <form id="searchForm" class="flex items-center">
                 <label for="searchInput">Search:</label>
-                <input type="text" id="username" name="searchInput" class="border p-2 mr-2">
+                <input type="text" id="username" name="searchInput" class="border p-2 mr-2 dark:bg-gray-800 dark:text-white">
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2">Submit</button>
             </form>
         </div>
-        <section class="flex">
+        <section class="flex flex-col">
 
-            <div id="artist" class="w-1/2 p-4 bg-gray-200 dark:bg-gray-800 border border-gray-400 dark:border-gray-600">
+            <div id="artist" class=" p-4 bg-gray-200 dark:bg-gray-800 border border-gray-400 dark:border-gray-600">
                 <h1 class="text-xl mb-2 text-center">Artist</h1><br>
             </div>
 
-            <div id="genre" class="w-1/2 p-4 bg-gray-300 dark:bg-gray-700 border border-gray-400 dark:border-gray-600">
-                <h1 class="text-xl mb-2 text-center">Genre</h1><br>
-            </div>
+            
             <button id="load-more-btn" class="bg-blue-500 text-white px-4 py-2 mt-4">Load More</button>
         </section>
     </main>
@@ -57,5 +55,4 @@
     <script src="./js/artist.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>
-
 </html>
