@@ -104,10 +104,10 @@ aside h2 {
 aside form {
     margin-bottom: 20px;
     margin-top: 100px;
-    /* Space added for the fixed navbar */
+   
 }
 
-/* Main styles */
+
 main {
     width: 75%;
     padding: 20px;
@@ -153,18 +153,19 @@ footer {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border: 2px solid #cbd5e0;
+    border: 2px solid black;
     border-radius: 0.75rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     font-family: Arial, sans-serif;
+    margin: 2px;
 }
 
 .card:hover {
-    transform: scale(1.02); /* Scale up slightly on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
-    border-color: #4a5568; /* Change border color on hover */
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+    border-color: #4a5568; 
 }
 
 .dark nav a {

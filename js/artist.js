@@ -3,6 +3,7 @@ const userNameInput = document.querySelector('#username');
 const artistContainer = document.querySelector('#artist');
 const genreContainer = document.querySelector('#genre');
 const formSubmit = document.querySelector('#searchForm');
+const loadMoreBtn = document.querySelector('#load-more-btn');
 
 const getUserArtist = function (event) {
     event.preventDefault();
@@ -16,6 +17,7 @@ const getUserArtist = function (event) {
                 response.json().then(function (data) {
                     //console.log(data);
                     displayArtists(data);
+                    showLoadMoreButton();
                 });
             } else {
                 alert(`Error:${response.statusText}`);
@@ -73,6 +75,10 @@ const displayGenres = function (Genres) {
         genre.textContent = `${Genres.toptags.tag[i].name}`;
         genreContainer.append(genre);
     }
+};
+
+const showLoadMoreButton = function () {
+    loadMoreBtn.style.display = 'block'; 
 };
 
 formSubmit.addEventListener('submit', getUserArtist);
