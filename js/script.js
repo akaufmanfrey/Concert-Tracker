@@ -20,6 +20,16 @@ function readArtistsFromStorage() {
 }
 
 function initializePage() {
+    // Grabing artist name from url
+    const queryString = document.location.search;
+    const artistName = queryString.split('=')[1];
+    const finalName = artistName.split('%20').join();
+    const nameF = finalName.split(',').join(' ');
+    console.log(nameF);
+    if (nameF !== null) {
+        searchInput.val(nameF);
+        searchButton.click();
+    }
     localStorage.setItem('next', '');
     const artistHistory = readArtistsFromStorage();
     if (artistHistory) {
@@ -102,16 +112,16 @@ function loadMoreResults(event) {
                 Authorization: "Bearer aZ6E2Dg5S1F-jxl_3A56LnvtDQEEqBw7rPP_5qgB",
             },
         })
-        .then(function(response) {
-            if (response.ok) {
-                console.log(response);
-                response.json().then(function(data) {
-                    localStorage.setItem('next', data.next);
-                    console.log(data.next);
-                    data.results.forEach(displayCard);
-                })
-            }
-        })
+            .then(function (response) {
+                if (response.ok) {
+                    console.log(response);
+                    response.json().then(function (data) {
+                        localStorage.setItem('next', data.next);
+                        console.log(data.next);
+                        data.results.forEach(displayCard);
+                    })
+                }
+            })
     }
 }
 
