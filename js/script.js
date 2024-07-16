@@ -2,7 +2,7 @@ const searchButton = $('button[type=submit]');
 const searchHistory = $('aside');
 const searchInput = $('#searchInput');
 const concertCards = $('#concert-container');
-const loadMoreButton = $('#load');
+const loadMoreButton = $('#load-more-btn');
 
 function readArtistsFromStorage() {
   
@@ -17,6 +17,7 @@ function readArtistsFromStorage() {
   
 }
 function displaySearchHistory() {
+    localStorage.setItem('next', '');
     const artistHistory = readArtistsFromStorage();
     if (artistHistory) {
         artistHistory.forEach(generateHistoryButton);
@@ -50,6 +51,7 @@ fetch(apiUrl, {
             searchInput.val('');
             console.log(response);
             response.json().then(function(data) {
+                localStorage.setItem('next', data.next);
                 console.log(data.next);
                 concertCards.empty();
                 data.results.forEach(displayCard);
@@ -58,10 +60,32 @@ fetch(apiUrl, {
     })
 }
 
+function loadMoreResults(event) {
+    event.preventDefault();
+    const apiUrl = localStorage.getItem('next');
+    if (apiUrl) {
+        fetch(apiUrl, {
+            headers: {
+                Authorization: "Bearer aZ6E2Dg5S1F-jxl_3A56LnvtDQEEqBw7rPP_5qgB",
+            },
+        })
+        .then(function(response) {
+            if (response.ok) {
+                console.log(response);
+                response.json().then(function(data) {
+                    localStorage.setItem('next', data.next);
+                    console.log(data.next);
+                    data.results.forEach(displayCard);
+                })
+            }
+        })
+    }
+}
+
 function displayCard(results) {
     console.log(results);
     const mainCard = $('<div>');
-    mainCard.addClass('block max-w-sm p-6 bg-gray border border-gray-300 rounded-lg shadow-md hover:shadow-lg dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 card');
+    mainCard.addClass('block max-w-sm p-6 border border-gray-300 rounded-lg shadow-md card');
     const mainCardContent = $('<div>');
     mainCardContent.addClass('card-content')
     const cardTitle = $('<p>');
@@ -85,6 +109,7 @@ function displayCard(results) {
 }
 
 searchButton.on('click', getConcertResults);
+loadMoreButton.on('click', loadMoreResults);
 $(document).ready(displaySearchHistory);
 $('aside').on('click', '.search-history', function(event) {
     searchInput.val($(event.target).text());
