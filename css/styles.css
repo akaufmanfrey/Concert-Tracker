@@ -208,3 +208,7 @@ footer {
     font-style: normal;
       
 }
+
+#load-more-btn {
+    display: none;
+}
