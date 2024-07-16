@@ -16,7 +16,7 @@ function readArtistsFromStorage() {
     }
 
 }
-function displaySearchHistory() {
+function initializePage() {
     localStorage.setItem('next', '');
     const artistHistory = readArtistsFromStorage();
     if (artistHistory) {
@@ -48,14 +48,16 @@ function getConcertResults(event) {
                     generateHistoryButton(artistSearch);
                     localStorage.setItem('artists', JSON.stringify(artistArray));
                 }
-            searchInput.val('');
-            console.log(response);
-            response.json().then(function(data) {
+                searchInput.val('');
+                console.log(response);
+                response.json().then(function(data) {
                 localStorage.setItem('next', data.next);
                 console.log(data.next);
                 concertCards.empty();
                 data.results.forEach(displayCard);
-        })
+            })
+        }
+    })
 }
 
 function loadMoreResults(event) {
@@ -108,7 +110,7 @@ function displayCard(results) {
 
 searchButton.on('click', getConcertResults);
 loadMoreButton.on('click', loadMoreResults);
-$(document).ready(displaySearchHistory);
+$(document).ready(initializePage);
 $('aside').on('click', '.search-history', function (event) {
     searchInput.val($(event.target).text());
     searchButton.click();
