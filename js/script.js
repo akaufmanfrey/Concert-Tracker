@@ -125,7 +125,6 @@ $('aside').on('click', '.search-history', function (event) {
 
 
 //Dark Mode for index.html
-// script.js
 document.addEventListener("DOMContentLoaded", function () {
     const darkModeToggle = document.getElementById("darkModeToggle");
 
