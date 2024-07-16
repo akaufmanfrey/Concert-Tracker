@@ -152,23 +152,18 @@ $('aside').on('click', '.search-history', function (event) {
 
 
 //Dark Mode for index.html
-document.addEventListener("DOMContentLoaded", function () {
-    const darkModeToggle = document.getElementById("darkModeToggle");
 
-    // Check for saved user preference
-    if (localStorage.getItem("dark-mode") === "enabled") {
-        document.body.classList.add("dark");
+document.addEventListener('DOMContentLoaded', () => {
+    const darkModeToggle = document.querySelector('#darkModeToggle');
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+    if (isDarkMode) {
+        document.querySelector('html').classList.add('dark');
     }
 
-    darkModeToggle.addEventListener("click", function () {
-        document.body.classList.toggle("dark");
-
-        // Save user preference
-        if (document.body.classList.contains("dark")) {
-            localStorage.setItem("dark-mode", "enabled");
-        } else {
-            localStorage.setItem("dark-mode", "disabled");
-        }
+    darkModeToggle.addEventListener('click', () => {
+        document.querySelector('html').classList.toggle('dark');
+        localStorage.setItem('darkMode', document.querySelector('html').classList.contains('dark'));
     });
 });
 
