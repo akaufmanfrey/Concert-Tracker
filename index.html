@@ -34,14 +34,16 @@
     <aside class="w-1/4 bg-gray-200 dark:bg-gray-800">
         <h2 class="text-xl mb-2">Search an artist here:</h2>
         <form id="searchForm" class="mb-4">
-            <label for="searchInput" class="block mb-2">Search:</label>
+            <label for="searchInput" class="block mb-2">Search artist:</label>
             <input type="text" id="searchInput" name="searchInput" class="border p-2 w-full mb-2">
+            <label for="location" class="block mb-2">Location:</label>
+            <input type="text" id="location" name="location" class="border p-2 w-full mb-2">
             <button type="submit" class="bg-blue-500 text-white px-4 py-2">Submit</button>
         </form>
-        <h2 class="text-xl mb-2">Search History</h2>
+        <h2 class="text-xl mb-2 dark:text-white">Search History</h2>
     </aside>
     <main class="w-3/4 p-4">
-        <h2 class="text-xl mb-2">Concert Results</h2>
+        <h2 class="text-xl mb-2 dark:text-white">Concert Results</h2>
         <div id="concert-container"></div>
             <button id="load-more-btn" class="bg-blue-500 text-white px-4 py-2 mt-4">Load More</button>
         </div>
