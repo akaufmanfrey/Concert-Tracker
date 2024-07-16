@@ -41,7 +41,7 @@ body {
 header {
     width: 100%;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     background-color: #f8f9fa;
     border-bottom: 30px solid #111827;
     font-style: bold, rgb(214 211 209);
@@ -63,6 +63,7 @@ nav {
     background-color: #1a202c;
     /* Semi-transparent background */
     padding: 10px 0;
+    margin: 
     /* Add some padding */
     z-index: 1000;
     /* Ensure it stays above other content */
@@ -117,7 +118,7 @@ footer {
     padding: 20px;
     text-align: center;
     background-color: #f8f9fa;
-    border-top: 1px solid #e9ecef;
+    border-top: 0px solid #e9ecef;
 }
 
 /* Dark Mode styles */
@@ -178,6 +179,34 @@ footer {
     background-color: #4a5568; /* Darker gray for elements using bg-gray-300 */
 }
 
+
+
+
+/* Dark Mode Toggle Button Styles */
+#darkModeToggle {
+    background-color: #f3f4f6; /* Light background color */
+    color: #1f2937; /* Dark text color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+#darkModeToggle:hover {
+    background-color: #e5e7eb; /* Slightly lighter background on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover */
+}
+
+/* Dark Mode Toggle Button Styles in Dark Mode */
+.dark #darkModeToggle {
+    background-color: #4a5568; /* Darker background color in dark mode */
+    color: #f7fafc; /* Light text color in dark mode */
+}
+
+.dark #darkModeToggle:hover {
+    background-color: #2d3748; /* Even darker background on hover in dark mode */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Larger shadow on hover in dark mode */
+}
+
+
 #concert-container {
     display: flex;
     flex-wrap: wrap;
@@ -189,6 +218,7 @@ footer {
    
 }
 
+
 @media (max-width: 768px) {
     .column {
         width: 100%; 
@@ -197,7 +227,7 @@ footer {
 
 footer {
     background-color: #f0f0f0;
-    padding: 20px;
+    padding: 0px;
     text-align: center;
 }
 
