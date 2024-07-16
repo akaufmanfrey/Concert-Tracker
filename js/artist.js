@@ -51,10 +51,11 @@ const displayArtists = function (artists) {
     artistContainer.classList = 'grid grid-cols-2 gap-3 px-2';
 
     for (let i = 0; i < artists.topartists.artist.length; i++) {
-        const artistName = document.createElement('button');
-        artistName.classList = 'bg-yellow-500  text-black font-bold py-2 px-2 border-b-3 rounded';
+        const artistName = document.createElement('a');
+        artistName.classList = 'bg-yellow-500  text-black font-bold py-2 px-2 border-b-3 rounded btn-artist';
         artistName.textContent = `${artists.topartists.artist[i].name}`;
-        artistName.setAttribute('data-artist', artists.topartists.artist[i].name);
+        artistName.setAttribute('href', `./index.html?artist=${artists.topartists.artist[i].name}`);
+        //artistName.setAttribute('data-artist', artists.topartists.artist[i].name)
         artistContainer.append(artistName);
     }
 };
@@ -75,6 +76,15 @@ const displayGenres = function (Genres) {
 };
 
 formSubmit.addEventListener('submit', getUserArtist);
+
+// artistContainer.addEventListener('click', (e) => {
+//     const target = e.target;
+//     if (target.classList.contains('btn-artist')) {
+//         window.location = './index.html';
+//         console.log(document.querySelector('#searchInput'));
+//         document.querySelector('#searchInput').value = target.textContent;
+//     }
+// });
 
 
 document.addEventListener('DOMContentLoaded', () => {
