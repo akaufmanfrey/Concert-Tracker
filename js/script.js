@@ -16,6 +16,7 @@ function readArtistsFromStorage() {
     }
 
 }
+
 function initializePage() {
     localStorage.setItem('next', '');
     const artistHistory = readArtistsFromStorage();
@@ -48,13 +49,18 @@ function getConcertResults(event) {
                     generateHistoryButton(artistSearch);
                     localStorage.setItem('artists', JSON.stringify(artistArray));
                 }
-                searchInput.val('');
-                console.log(response);
-                response.json().then(function(data) {
+            searchInput.val('');
+            console.log(response);
+            response.json().then(function(data) {
                 localStorage.setItem('next', data.next);
                 console.log(data.next);
                 concertCards.empty();
-                data.results.forEach(displayCard);
+                data.results.forEach(displayCard);      
+                if (data.next) {
+                  $('#load-more-btn').show();
+                } else {
+                  $('#load-more-btn').hide();
+                }
             })
         }
     })
@@ -95,7 +101,7 @@ function displayCard(results) {
     cardDate.addClass('mb-2 text-lg font-bold tracking-tight text-white');
     cardDate.text(results.start_local);
     const cardDesc = $('<p>');
-    cardDesc.addClass('mb-2 text-lg font-normal text-white dark:text-gray-400');
+    cardDesc.addClass('mb-2 text-lg font-normal text-white dark:white');
     cardDesc.text(results.description);
     const cardAddress = $('<p>');
     cardAddress.addClass('mb-2 text-lg font-bold tracking-tight text-white');
@@ -139,3 +145,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
