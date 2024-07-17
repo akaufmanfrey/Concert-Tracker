@@ -20,21 +20,22 @@ function readArtistsFromStorage() {
 }
 
 function initializePage() {
-    // Grabing artist name from url
-    const queryString = document.location.search;
-    const artistName = queryString.split('=')[1];
-    const finalName = artistName.split('%20').join();
-    const nameF = finalName.split(',').join(' ');
-    console.log(nameF);
-    if (nameF !== null) {
-        searchInput.val(nameF);
-        searchButton.click();
-    }
-    localStorage.setItem('next', '');
     const artistHistory = readArtistsFromStorage();
     if (artistHistory) {
         artistHistory.forEach(generateHistoryButton);
     }
+    // Grabing artist name from url
+    const queryString = document.location.search;
+    if (queryString) {
+        const artistName = queryString.split('=')[1];
+        const finalName = artistName.split('%20').join();
+        const nameF = finalName.split(',').join(' ');
+        console.log(nameF);
+        searchInput.val(nameF);
+        searchButton.click();
+    }
+    localStorage.setItem('next', '');
+
 }
 
 function generateHistoryButton(artist) {
