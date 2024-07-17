@@ -55,7 +55,7 @@ function getConcertResults(event) {
         localStorage.setItem('artists', JSON.stringify(artistArray));
     }
     if (artistSearch && locationSearch) {
-        const Url = `http://api.openweathermap.org/geo/1.0/direct?q=${locationSearch}&limit=1&appid=${apiKey}`
+        const Url = `https://api.openweathermap.org/geo/1.0/direct?q=${locationSearch}&limit=1&appid=${apiKey}`
         fetch(Url).then(function (response) {
             if (response.ok) {
                 console.log(response);
