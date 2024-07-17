@@ -19,6 +19,8 @@ We learned to collaborate with one another and use effective communication to ac
 - On the Main Page search your favorite artists' (or by location) to get upcoming events and concerts.
 - On the Lastfm Page, do a search with your lastfm username, and look for your top artists and get immediate results. 
 
+https://github.com/akaufmanfrey/Concert-Tracker
+
 
 ## Credits
 
@@ -45,17 +47,9 @@ Collaborators:
 
 ## License
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+Please refer to the license in the repo.
 
----
 
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-
-Badges aren't necessary, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
 
 ## Features
 
@@ -96,7 +90,4 @@ Error Handling:
 - The JavaScript code includes error handling for API requests, displaying alerts when there are issues fetching data, ensuring the user is informed if something goes wrong.
 These features collectively create a rich, interactive, and user-friendly experience for visitors to the webpage.
 
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
 
