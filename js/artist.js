@@ -39,16 +39,26 @@ const displayArtists = function (artists) {
 
     for (let i = 0; i < artists.topartists.artist.length; i++) {
         const artistName = document.createElement('a');
-        artistName.classList = 'bg-yellow-500  text-black font-bold py-2 px-2 border-b-3 rounded btn-artist';
+        artistName.classList = 'bg-yellow-500  text-black font-bold py-2 px-2 border-b-3 rounded';
+        if (i > 19) {
+            artistName.classList.add('hidden');
+        }
         artistName.textContent = `${artists.topartists.artist[i].name.trim()}`;
         artistName.setAttribute('href', `./index.html?artist=${artistName.textContent}`);
         artistContainer.append(artistName);
     }
 };
 
+loadMoreBtn.addEventListener('click', () => {
+    for (const btn of artistContainer.children) {
+        btn.classList.remove('hidden');
+    }
+
+})
+
 
 const showLoadMoreButton = function () {
-    loadMoreBtn.style.display = 'block'; 
+    loadMoreBtn.style.display = 'block';
 };
 
 formSubmit.addEventListener('submit', getUserArtist);
