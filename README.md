@@ -37,8 +37,8 @@ CSS Frameworks and other:
 
 Collaborators:
 - Adam Kaufman: https://github.com/akaufmanfrey
-- Hamid:
-- Corey:
+- Hamid: https://github.com/hmd-asg
+- Corey: https://github.com/Chamberbankes
 - Mark Norberte: https://github.com/markjas0n
 
 
